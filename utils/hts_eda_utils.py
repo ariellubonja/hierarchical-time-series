@@ -1,5 +1,6 @@
 from matplotlib import pyplot as plt
 import pandas as pd
+import numpy as np
 
 def get_zero_columns(df, any_or_all='all'):
     if any_or_all == 'any':
@@ -124,3 +125,10 @@ def create_S_df(df, HIERARCHY_DELIMITER='_'):
         S_df.at['Total', col] = 1
 
     return S_df
+
+
+def mean_absolute_percentage_error(y_true, y_pred): 
+    return np.mean(np.abs((y_true - y_pred) / y_true)) * 100
+
+def symmetric_mean_absolute_percentage_error(y_true, y_pred):
+    return 100/len(y_true) * np.sum(2 * np.abs(y_pred - y_true) / (np.abs(y_true) + np.abs(y_pred)))
