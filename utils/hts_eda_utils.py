@@ -180,3 +180,7 @@ def mean_absolute_percentage_error(y_true, y_pred):
 
 def symmetric_mean_absolute_percentage_error(y_true, y_pred):
     return 100/len(y_true) * np.sum(2 * np.abs(y_pred - y_true) / (np.abs(y_true) + np.abs(y_pred)))
+
+
+def median_absolute_percentage_error(y_true, y_pred):
+    return np.median(np.abs((y_true - y_pred) / y_true)) * 100
